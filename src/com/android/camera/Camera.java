@@ -997,7 +997,8 @@ public class Camera extends NoSearchActivity implements View.OnClickListener,
                 CameraHolder.instance().getCameraInfo(), mCameraId);
         mHeadUpDisplay.initialize(this,
                 settings.getPreferenceGroup(R.xml.camera_preferences),
-                getZoomRatios(), mOrientationCompensation);
+                CameraSettings.isZoomSupported(this, mCameraId) ? getZoomRatios() : null,
+                mOrientationCompensation);
         if (mParameters.isZoomSupported()) {
             mHeadUpDisplay.setZoomListener(new ZoomControllerListener() {
                 public void onZoomChanged(
@@ -1918,7 +1919,15 @@ public class Camera extends NoSearchActivity implements View.OnClickListener,
             updateCameraParametersPreference();
         }
 
-        mCameraDevice.setParameters(mParameters);
+        CameraSettings.dumpParameters(mParameters);
+
+        try {
+            mCameraDevice.setParameters(mParameters);
+        } catch (Exception e) {
+            // Some phones with dual cameras fail to report the actual parameters
+            // on the FFC. Filtering is device-specific but would be better.
+            Log.e(TAG, "Error setting parameters: " + e.getMessage());
+        }
     }
 
     // If the Camera is idle, update the parameters immediately, otherwise
