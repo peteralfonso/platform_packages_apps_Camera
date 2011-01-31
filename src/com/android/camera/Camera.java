@@ -1687,6 +1687,8 @@ public class Camera extends NoSearchActivity implements View.OnClickListener,
         */
         mParameters = mCameraDevice.getParameters();
         mZoomMax = mParameters.getMaxZoom();
+        CameraSettings.setVideoMode(mParameters, false);
+        mCameraDevice.setParameters(mParameters);
     }
 
     private void stopPreview() {
