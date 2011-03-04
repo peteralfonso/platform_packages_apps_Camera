@@ -49,7 +49,8 @@
     <string name="pref_video_quality_entry_high" msgid="2874184763684055612">"Высокое (30 мин.)"</string>
     <string name="pref_video_quality_entry_low" msgid="5282945640948667598">"Низкое (30 мин.)"</string>
     <string name="pref_video_quality_entry_mms" msgid="2271260293894247704">"MMS (низкое, 30 с.)"</string>
-    <string name="pref_video_quality_entry_youtube" msgid="3731902408685997150">"YouTube (высокое, 10 мин.)"</string>
+    <string name="pref_video_quality_entry_youtubehd">YouTube (HD, 15m)</string>
+    <string name="pref_video_quality_entry_youtube">YouTube (высокое, 15m)</string>	
     <string name="pref_camera_settings_category" msgid="2576236450859613120">"Настройки камеры"</string>
     <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Настройки видеокамеры"</string>
     <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Размер фотографии"</string>
