@@ -129,6 +129,8 @@ public class CamcorderHeadUpDisplay extends HeadUpDisplay {
     }
 
     public void setVideoQualityControlsEnabled(boolean enabled) {
-        mVideoQualitySettings.setEnabled(enabled);
+        if (mVideoQualitySettings != null) {
+            mVideoQualitySettings.setEnabled(enabled);
+        }
     }
 }
