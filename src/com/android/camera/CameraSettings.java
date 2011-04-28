@@ -477,6 +477,8 @@ public class CameraSettings {
     public static void setVideoMode(Parameters params, boolean on) {
         if (isHtcCamera(params)) {
             params.set("cam-mode", on ? "1" : "0");
+        } else if (isNVCamera(params)) {
+            params.set("nv-mode-hint", on ? "video" : "still");
         }
     }
 
@@ -495,5 +497,9 @@ public class CameraSettings {
     // Hackish way to know if this is an HTC camera
     private static boolean isHtcCamera(Parameters params) {
         return params.get("taking-picture-zoom") != null;
+    }
+
+    private static boolean isNVCamera(Parameters params) {
+        return params.get("nv-mode-hint") != null;
     }
 }
